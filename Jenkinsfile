@@ -62,6 +62,6 @@ pipeline {
 
         failure {
            hangoutsNotify message: "❌ Deu Errado!\n⏰ Tempo de Duração: ${currentBuild.duration / 1000} segundos", token: "$CHAT_TOKEN", threadByJob: false 
-        }
-    } */
+        } */
+    } 
 }
