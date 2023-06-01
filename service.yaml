@@ -7,6 +7,6 @@ spec:
   selector:
     app: grafana-bwg
   ports:
-  - name: grafana-bwg-port
+  - name: grafana-port
     port: 3000
     targetPort: 3000
