@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-bwg
+spec:
+  selector:
+    matchLabels:
+      app: grafana-bwg
+  template:
+    metadata:
+      labels:
+        app: grafana-bwg
+    spec:
+      containers:
+      - name: myapp
+        image: guisousa/grafana-bwg:latest
+        resources:
+#          limits:
+#           //Ainda a definir//
+#            memory: "128Mi"
+#            cpu: "500m"
+        ports:
+        - name: grafana-bwg-port
+          containerPort: 3000
