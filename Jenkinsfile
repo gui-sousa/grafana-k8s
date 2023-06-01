@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Atualizando Código') {
+        stage('Update Code') {
             steps {
                 git branch: 'dev', url: "$GIT_URL"
             }
@@ -42,13 +42,13 @@ pipeline {
             steps {
                 withKubeConfig([credentialsId: 'k0s-vanuatu']) {
                     sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
-                    sh './kubectl apply -f service.yaml'
-                    sh './kubectl apply -f deployment.yaml'
+                    sh './kubectl apply -f https://raw.githubusercontent.com/gui-sousa/grafana-k8s/dev/service.yaml'
+                    sh './kubectl apply -f https://raw.githubusercontent.com/gui-sousa/grafana-k8s/dev/deployment.yaml'
                 }
             }
         }
 
-        stage('Test Nginx Page') {
+        stage('Test Grafana login Page') {
             steps {
                 httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: 'http://10.1.81.21:3000/', validResponseCodes: '200', validResponseContent: 'Guizin!'
             }
