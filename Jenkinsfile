@@ -51,7 +51,7 @@ pipeline {
 
         stage('Test Grafana login Page') {
             steps {
-                httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: 'http://10.1.81.21:3000/', validResponseCodes: '200', validResponseContent: 'Guizin!'
+                httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: 'http://10.1.81.21:32004/', validResponseCodes: '200', validResponseContent: 'Guizin!'
             }
         }
     }
