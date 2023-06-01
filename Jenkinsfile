@@ -22,7 +22,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerapp = docker.build("guisousa/grafana-bwg:${env.BUILD_ID}", "-f Dockerfile .")
+                    dockerapp = docker.build("guisousa/grafana-bwg:${env.BUILD_ID}", "-f Dockerfile .", "--no-cache")
                 }
             }
         }
