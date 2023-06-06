@@ -45,7 +45,7 @@ pipeline {
 
         stage('Deploy Kubernetes') {
             steps {
-                withKubeConfig([credentialsId: '&K8s_TOKEN']) {
+                withKubeConfig([credentialsId: "&K8s_TOKEN"]) {
                     sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
                     sh 'chmod +x kubectl' 
                     sh './kubectl apply -f service.yaml'

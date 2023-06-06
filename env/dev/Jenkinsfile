@@ -6,6 +6,7 @@ pipeline {
         GIT_URL = "https://github.com/gui-sousa/grafana-k8s.git"
         GIT_BRANCH = "dev"
         K8s_TOKEN = "k0s-vanuatu"
+        APP_URL = "http://10.1.81.21:32004/"
     }
 
     stages {
@@ -53,7 +54,7 @@ pipeline {
 
         stage('Test Grafana login Page') {
             steps {
-                httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: 'http://10.1.81.21:32004/', validResponseCodes: '200', validResponseContent: 'Grafana'
+                httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: "$APP_URL", validResponseCodes: '200', validResponseContent: 'Grafana'
             }
         }
     }
