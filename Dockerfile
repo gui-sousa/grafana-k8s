@@ -1,5 +1,6 @@
 FROM grafana/grafana:latest
 
-RUN echo test
+RUN grafana-cli plugins install alexanderzobnin-zabbix-app
 
-ENTRYPOINT ["/run.sh"]
+#ENTRYPOINT ["/run.sh"]
+CMD ["grafana-server", "--config=/etc/grafana/grafana.ini"]
