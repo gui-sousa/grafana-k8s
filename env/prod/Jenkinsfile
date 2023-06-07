@@ -47,7 +47,7 @@ pipeline {
                 responseHandle: 'NONE', 
                 url: "$APP_URL", 
                 validResponseCodes: '200', 
-                validResponseContent: 'Grafana'
+                validResponseContent: 'Grafana',
                 timeout: 60
             }
         }
