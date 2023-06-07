@@ -72,8 +72,8 @@ pipeline {
             steps {
               script {
                 def userInput = input(
-                    id: 'commitApproval'
-                    message: "Aprovar deploy em produção?"
+                    id: 'commitApproval',
+                    message: "Aprovar deploy em produção?",
                     parameters: [
                         [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Aprovar o commit?', name: 'approve']
                     ]
