@@ -5,7 +5,7 @@ USER root
 
 #USER grafana
 RUN grafana-cli --pluginsDir /grafana-plugins plugins install alexanderzobnin-zabbix-app \
-    && service grafana-server restart
+    && systemctl restart grafana-server
 
 
 #ENTRYPOINT ["/run.sh"]
