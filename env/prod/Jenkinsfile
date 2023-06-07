@@ -26,25 +26,6 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
-            steps {
-                script {
-                    dockerapp = docker.build("guisousa/grafana-bwg:${env.BUILD_ID}", "-f Dockerfile . --no-cache")
-                }
-            }
-        }
-
-        stage('Docker Push Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-gsousa') {
-                        dockerapp.push('latest')
-                        dockerapp.push(env.BUILD_ID)
-                    }
-                }
-            }
-        }
-
         stage('Deploy Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: "&K8s_TOKEN"]) {
