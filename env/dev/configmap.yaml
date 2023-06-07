@@ -4,4 +4,4 @@ metadata:
   name: dev-configmap
   namespace: default
 data:
-  NAMESPACE-DEV: default
+  env-namespace: default

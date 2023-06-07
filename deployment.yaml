@@ -2,7 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana-bwg
-  namespace: $(NAMESPACE-DEV)
+  namespace: env-namespace
+  valueFrom:
+    configMapKeyRef:
+      name: namespace
+      key: env-namespace
 spec:
   selector:
     matchLabels:
