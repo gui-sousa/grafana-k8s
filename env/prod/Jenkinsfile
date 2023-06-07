@@ -21,7 +21,9 @@ pipeline {
 
             post {
                 always {
-                   hangoutsNotify message: "⚙️ Iniciando build\n⏰ Horario de início: $BUILD_TIMESTAMP", token: "$CHAT_TOKEN", threadByJob: false
+                   hangoutsNotify message: "⚙️ Iniciando build\n⏰ Horario de início: $BUILD_TIMESTAMP", 
+                   token: "$CHAT_TOKEN", 
+                   threadByJob: false
                 }
             }
         }
@@ -41,18 +43,27 @@ pipeline {
 
         stage('Test Grafana login Page') {
             steps {
-                httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: "$APP_URL", validResponseCodes: '200', validResponseContent: 'Grafana'
+                httpRequest consoleLogResponseBody: true, 
+                responseHandle: 'NONE', 
+                url: "$APP_URL", 
+                validResponseCodes: '200', 
+                validResponseContent: 'Grafana'
+                timeout: 60
             }
         }
     }
 
     post {
         success {
-            hangoutsNotify message: "✅ Deu Certo!\n⏰ Tempo de Duração: ${currentBuild.duration / 1000} segundos", token: "$CHAT_TOKEN", threadByJob: false
+            hangoutsNotify message: "✅ Deu Certo!\n⏰ Tempo de Duração: ${currentBuild.duration / 1000} segundos", 
+            token: "$CHAT_TOKEN", 
+            threadByJob: false
         }
 
         failure {
-           hangoutsNotify message: "❌ Deu Errado!\n⏰ Tempo de Duração: ${currentBuild.duration / 1000} segundos", token: "$CHAT_TOKEN", threadByJob: false 
+           hangoutsNotify message: "❌ Deu Errado!\n⏰ Tempo de Duração: ${currentBuild.duration / 1000} segundos", 
+           token: "$CHAT_TOKEN", 
+           threadByJob: false 
         }
     } 
 }
