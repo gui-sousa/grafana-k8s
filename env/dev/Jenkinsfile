@@ -57,7 +57,12 @@ pipeline {
 
         stage('Test Grafana login Page') {
             steps {
-                httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: "$APP_URL", validResponseCodes: '200', validResponseContent: 'Grafana', timeout: 60
+                httpRequest consoleLogResponseBody: true, 
+                responseHandle: 'NONE', 
+                url: "$APP_URL", 
+                validResponseCodes: '200', 
+                validResponseContent: 'Grafana', 
+                timeout: 60
             }
         }
     }
