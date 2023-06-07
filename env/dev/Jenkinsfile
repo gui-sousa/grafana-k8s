@@ -67,6 +67,40 @@ pipeline {
                 timeout: 60
             }
         }
+
+        stage('Aprove commit') {
+            steps {
+              script {
+                def userInput = input(
+                    id: 'commitApproval'
+                    message: "Aprovar deploy em produção?"
+                    parameters: [
+                        [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Aprovar o commit?', name: 'approve']
+                    ]
+                )
+                if (!userInput.approve) {
+                    post {
+                        always {
+                            hangoutsNotify message: "✅ Deu Certo!\n⏰ Tempo de Duração: ${currentBuild.duration / 1000} segundos", 
+                            token: "$CHAT_TOKEN", 
+                            threadByJob: false
+                        }
+                    }
+                }
+              }
+            }
+        }
+
+        stage('Commit na Branch Master') {
+            steps {
+              withCredentials([usernamePassword(credentialsId: 'github-gsousa', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/gui-sousa/grafana-k8s')
+                    }
+            }
+            }
+
+
+    
     }
 
     post {
@@ -81,5 +115,5 @@ pipeline {
            token: "$CHAT_TOKEN", 
            threadByJob: false 
         }
-    } 
+    }
 }
