@@ -15,6 +15,11 @@ spec:
       containers:
       - name: myapp
         image: grafana/grafana:latest
+        command:
+          - "grafana-cli"
+          - "plugins"
+          - "enable"
+          - "alexanderzobnin-zabbix-app"
         resources:
 #          limits:
 #           //Ainda a definir//
