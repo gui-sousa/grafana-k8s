@@ -7,9 +7,9 @@ RUN microdnf install -y yum \
 && grafana-cli plugins install alexanderzobnin-zabbix-app
 
 # Configuração do serviço e reinício do Grafana Server
-RUN systemctl enable grafana-server.service \
-&& systemctl stop grafana-server.service \
-&& systemctl start grafana-server.service
+RUN systemctl enable grafana-server.service
+#&& systemctl stop grafana-server.service \
+#&& systemctl start grafana-server.service
 
 # Porta exposta para acessar o Grafana
 EXPOSE 3000
