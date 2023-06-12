@@ -4,7 +4,7 @@ USER root
 
 RUN microdnf install -y yum \
 && yum install -y https://dl.grafana.com/enterprise/release/grafana-enterprise-9.5.3-1.x86_64.rpm \
-&& grafana-cli plugins install alexanderzobnin-zabbix-app
+&& grafana-cli --pluginsDir "/data/grafana/plugins" plugins install alexanderzobnin-zabbix-app
 
 # Configuração do serviço e reinício do Grafana Server
 #RUN systemctl enable grafana-server.service
