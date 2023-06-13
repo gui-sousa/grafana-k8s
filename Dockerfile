@@ -1,7 +1,7 @@
 FROM grafana/grafana:latest
 
-ENV GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
-RUN grafana-cli --pluginsDir "/var/lib/grafana/plugins" plugins install $GF_INSTALL_PLUGINS
+ENV GF_INSTALL_PLUGINS="alexanderzobnin-zabbix-app"
+#RUN grafana-cli --pluginsDir "/var/lib/grafana/plugins" plugins install $GF_INSTALL_PLUGINS
 
 #EXPOSE 3000
 

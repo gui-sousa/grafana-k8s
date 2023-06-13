@@ -15,11 +15,6 @@ spec:
       containers:
       - name: myapp
         image: grafana/grafana:latest
-        command:
-          - "grafana-cli"
-          - "plugins"
-          - "enable"
-          - "alexanderzobnin-zabbix-app"
         resources:
 #          limits:
 #           //Ainda a definir//
@@ -28,6 +23,6 @@ spec:
         ports:
         - name: grafana-port
           containerPort: 3000
-        env:
-          - name: GF_INSTALL_PLUGINS
-            value: alexanderzobnin-zabbix-app
+        #env:
+        #  - name: GF_INSTALL_PLUGINS
+        #    value: alexanderzobnin-zabbix-app
