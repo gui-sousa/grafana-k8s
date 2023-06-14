@@ -1,6 +1,8 @@
 FROM grafana/grafana:latest
 
 ENV GF_INSTALL_PLUGINS="alexanderzobnin-zabbix-app"
+ENV GF_PLUGINS_ENABLE_ALPHA=true
+ENV GF_PLUGINS_PLUGIN_ADMIN_ENABLED=false
 #RUN grafana-cli --pluginsDir "/var/lib/grafana/plugins" plugins install $GF_INSTALL_PLUGINS
 
 #EXPOSE 3000
