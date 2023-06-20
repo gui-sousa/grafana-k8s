@@ -54,6 +54,27 @@ pipeline {
                 httpRequest consoleLogResponseBody: true, responseHandle: 'NONE', url: 'http://10.1.81.21:32004/', validResponseCodes: '200', validResponseContent: 'Grafana'
             }
         }
+
+        stage('Aprovar Exlusão k8s') {
+            steps {
+                input "Deseja continuar com a exclusão da Infraestrutura Kubernetes?"
+            }
+
+            post {
+                always {
+                    hangoutsNotify message: "✅ Deu Certo!\n⏰ Tempo de Duração: ${currentBuild.duration / 1000} segundos", token: "$CHAT_TOKEN", threadByJob: false
+                }
+            }
+        }
+
+        stage('Destruindo Infraestrutura 👿') {
+            steps {
+                withKubeConfig ([credentialsId: 'k0s-vanuatu']) {
+                    sh './kubectl delete -f deployment.yaml'
+                    sh './kubectl delete -f service.yaml'
+                }
+            }
+        }
     }
 
     post {
