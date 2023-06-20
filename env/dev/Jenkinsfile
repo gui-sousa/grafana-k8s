@@ -57,6 +57,14 @@ pipeline {
             }
         }
 
+        stage('Aguardando URL estar acessivel') {
+        steps {
+            script {
+                sleep(time: 60, unit: 'SECONDS')
+            }
+        }
+        }        
+
         stage('Test Grafana login Page') {
             steps {
                 httpRequest consoleLogResponseBody: true, 
