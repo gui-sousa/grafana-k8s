@@ -7,7 +7,7 @@ ENV GF_PLUGINS_PLUGIN_ADMIN_ENABLED=false
 
 #EXPOSE 3000
 WORKDIR /usr/share/grafana
-COPY apps.yaml /conf/provisioning/plugins/
+COPY ./apps.yaml /conf/provisioning/plugins/
 
 ENTRYPOINT [ "/run.sh" ]
 # Comando de inicialização do Grafana Server
