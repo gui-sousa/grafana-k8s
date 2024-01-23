@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana-bwg
-  namespace: $NAMESPACE
+  namespace: default
+  #namespace: $NAMESPACE
 spec:
   selector:
     matchLabels:
