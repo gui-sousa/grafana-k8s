@@ -9,6 +9,6 @@ ENV GF_PLUGINS_PLUGIN_ADMIN_ENABLED=false
 
 COPY apps.yaml /etc/grafana/provisioning/plugins
 
-ENTRYPOINT [ "/run.sh" ]
+#ENTRYPOINT [ "/run.sh" ]
 # Comando de inicialização do Grafana Server
 #CMD ["/usr/sbin/grafana-server", "--config=/etc/grafana/grafana.ini", "--homepath=/usr/share/grafana"]

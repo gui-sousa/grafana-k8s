@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: guisousa/grafana-bwg:latest
+        image: grafana/grafana:latest
         resources:
 #          limits:
 #           //Ainda a definir//
